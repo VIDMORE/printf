@@ -1,8 +1,11 @@
+#ifndef PRINT_F
+#define PRINT_F
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+
 typedef struct formats
 {
 	char f;
@@ -12,3 +15,5 @@ typedef struct formats
 int _printf(char *format, ...);
 void printstr(va_list);
 void printchar(va_list);
+
+#endif

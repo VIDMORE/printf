@@ -3,7 +3,6 @@
 int _printf(char *format, ...)
 {
 	int i, j;
-	int bandera = 0;
 
 	forms formlist[] = {
 		{'s', printstr},
@@ -33,7 +32,7 @@ int _printf(char *format, ...)
 		}
 		else
 		{
-			/**_putchar();*/
+			_putchar(format[i]);
 		}
 	}
 

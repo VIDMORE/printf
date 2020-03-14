@@ -27,11 +27,8 @@ void printchar(va_list params)
 {
 	int i;
 	char chr;
-	
-	if (params)
-	{
+
 		chr = va_arg(params, int);
 
-		write(1, &chr, 1);
-	}
+		write(1, chr, 1);
 }
