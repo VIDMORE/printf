@@ -11,7 +11,7 @@ typedef struct formats
 	void (*print_str)(va_list);
 } forms;
 
-void _printf(char *sformat, ...)
+int _printf(char *format, ...)
 void printstr(va_list);
 void printchar(va_list);
 
