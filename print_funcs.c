@@ -26,7 +26,13 @@ void printchar(va_list params)
 {
 	char chr;
 
-		chr = va_arg(params, int);
+	chr = va_arg(params, int);
 
+	write(1, &chr, 1);
+}
+
+void _printchar(char chr)
+{
+	if (chr)
 		write(1, &chr, 1);
 }
