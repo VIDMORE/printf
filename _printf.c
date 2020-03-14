@@ -29,7 +29,7 @@ int _printf(char *format, ...)
 				}
 				else if (format[i + 1] == '%')
 				{
-					_printper();
+					printper();
 					i++;
                                         break;
 				}
