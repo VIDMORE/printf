@@ -7,7 +7,8 @@ int _printf(char *format, ...)
 	forms formlist[] = {
 		{"s", printstr},
 		{"c", printchar},
-		{"%", printper},
+		{"d", printdec},
+		{"i", printint}
 		{NULL, NULL}
 	};
 

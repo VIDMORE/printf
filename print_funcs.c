@@ -39,5 +39,5 @@ void _printchar(char chr)
 
 void printper(void)
 {
-		write(1, '%', 1);
+		write(1, "%", 1);
 }
