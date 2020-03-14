@@ -32,7 +32,7 @@ int _printf(char *format, ...)
 		}
 		else
 		{
-			_putchar(format[i]);
+			formlist[1].print_str(format[i]);
 		}
 	}
 
