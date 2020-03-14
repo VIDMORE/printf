@@ -37,8 +37,7 @@ void _printchar(char chr)
 		write(1, &chr, 1);
 }
 
-void printper(va_list params)
+void printper(void)
 {
-	if (params)
 		write(1, '%', 1);
 }
