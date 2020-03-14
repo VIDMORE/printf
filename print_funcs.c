@@ -13,7 +13,7 @@ void printstr(va_list params)
 	{
 		str = va_arg(params, char *);
 
-		write(1, &str, strlen(str));
+		write(1, str, strlen(str));
 	}
 }
 
@@ -35,4 +35,10 @@ void _printchar(char chr)
 {
 	if (chr)
 		write(1, &chr, 1);
+}
+
+void printper(va_list params)
+{
+	if (params)
+		write(1, '%', 1);
 }
