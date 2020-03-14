@@ -12,7 +12,7 @@ void printstr(va_list params)
 
 	if (params)
 	{
-		str = va_arg(param, char *);
+		str = va_arg(params, char *);
 
 		write(1, str, strlen(str));
 	}
@@ -28,10 +28,7 @@ void printchar(va_list params)
 	int i;
 	char chr;
 
-	if ()
-	{
-		chr = va_arg(param, int);
+		chr = va_arg(params, int);
 
 		write(1, chr, 1);
-	}
 }

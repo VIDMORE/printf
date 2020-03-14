@@ -2,15 +2,17 @@
 
 int _printf(char *format, ...)
 {
-	int i;
-	va_list args;
+	int i, j;
 	int bandera = 0;
-	va_start(args, sformat);
 
 	forms formlist[] = {
-		{'s', printstr}
+		{'s', printstr},
 		{'c', printchar}
 	};
+
+	va_list args;
+
+	va_start(args, format);
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
@@ -20,7 +22,7 @@ int _printf(char *format, ...)
 			{
 				if (format[i + 1] == formlist[j].f)
 				{
-					formlist[j].(args);
+					formlist[j].print_str(args);
 					i++;
 					break;
 				}
@@ -31,9 +33,11 @@ int _printf(char *format, ...)
 		}
 		else
 		{
-			_putchar();
+			/**_putchar();*/
 		}
 	}
 
 	va_end(args);
+
+	return (0);
 }
