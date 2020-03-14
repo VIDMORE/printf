@@ -8,7 +8,7 @@
 
 typedef struct formats
 {
-	char f;
+	char *f;
 	void (*print_str)(va_list);
 } forms;
 

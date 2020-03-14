@@ -5,8 +5,10 @@ int _printf(char *format, ...)
 	int i, j;
 
 	forms formlist[] = {
-		{'s', printstr},
-		{'c', printchar}
+		{"s", printstr},
+		{"c", printchar},
+		{"%", printper},
+		{NULL, NULL}
 	};
 
 	va_list args;
@@ -19,15 +21,20 @@ int _printf(char *format, ...)
 		{
 			for (j = 0; j < 2; j++)
 			{
-				if (format[i + 1] == formlist[j].f)
+				if (format[i + 1] == *formlist[j].f && format[i + 1] != '%')
 				{
 					formlist[j].print_str(args);
 					i++;
 					break;
 				}
+				else if (format[i + 1] == '%')
+				{
+					_printper();
+					i++;
+                                        break;
+				}
 			}
-
-			if (format[i + 1] != formlist[j].f)
+			if (!formlist[j].f)
 				exit(255);
 		}
 		else

@@ -13,7 +13,7 @@ void printstr(va_list params)
 	{
 		str = va_arg(params, char *);
 
-		write(1, &str, strlen(str));
+		write(1, str, strlen(str));
 	}
 }
 
