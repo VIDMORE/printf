@@ -39,5 +39,33 @@ void _printchar(char chr)
 
 void printper(void)
 {
-		write(1, "%", 1);
+	write(1, "%", 1);
+}
+
+void validate_format(char *format)
+{
+	if (format)
+	{
+		if (format[i] == '%')
+		{
+			for (j = 0; j < 2; j++)
+			{
+				if (format[i + 1] == *formlist[j].f && format[i + 1] != '%')
+				{
+					formlist[j].print_str(args);
+					i++;
+					break;
+				}
+				else if (format[i + 1] == '%')
+				{
+					_printper();
+					i++;
+					break;
+				}
+			}
+			if (!formlist[j].f)
+				exit(255);
+		else
+			_printchar(format[i]);
+	}
 }
