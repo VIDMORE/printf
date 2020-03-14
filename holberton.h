@@ -15,5 +15,5 @@ typedef struct formats
 int _printf(char *format, ...);
 void printstr(va_list);
 void printchar(va_list);
-
+void _printchar(char);
 #endif
