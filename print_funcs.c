@@ -42,32 +42,43 @@ void printper(void)
 	write(1, "%", 1);
 }
 
-void validate_format(char *format, form formlist, va_list args)
+void validate_format(char *format, va_list args)
 {
 	int i = 0, j;
+	forms formlist[] = {
+		{"s", printstr},
+		{"c", printchar},
+		{NULL, NULL}
+	};
 
 	if (format)
 	{
-		if (format[i] == '%')
+		for (i = 0; format[i] != '\0'; i++)
 		{
-			for (j = 0; j < 2; j++)
+			if (format[i] == '%')
 			{
-				if (format[i + 1] == *formlist[j].f && format[i + 1] != '%')
+				for (j = 0; j < 2; j++)
 				{
-					formlist[j].print_str(args);
-					i++;
-					break;
+					if (format[i + 1] == *formlist[j].f && format[i + 1] != '%')
+					{
+						formlist[j].print_str(args);
+						i++;
+						break;
+					}
+					else if (format[i + 1] == '%')
+					{
+						printper();
+						i++;
+						break;
+					}
 				}
-				else if (format[i + 1] == '%')
-				{
-					_printper();
-					i++;
-					break;
-				}
+				if (!formlist[j].f)
+					exit(255);
 			}
-			if (!formlist[j].f)
-				exit(255);
-		else
-			_printchar(format[i]);
+			else
+			{
+				_printchar(format[i]);
+			}
+		}	
 	}
 }
