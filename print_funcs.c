@@ -49,7 +49,7 @@ void validate_format(char *format, va_list args)
 		{"s", printstr},
 		{"c", printchar},
 		{"i", printint},
-		{"d", printint}
+		{"d", printint},
 		{NULL, NULL}
 	};
 
@@ -87,17 +87,16 @@ void validate_format(char *format, va_list args)
 
 void printint(va_list params)
 {
-	int i, value = 0, counter = 0;
+	char value;
 
 	if (params)
 	{
-		value = va_arg(params, arg);
+		value = va_arg(params, int) + 48;
 
-		while (value != 0)
+		while (value > 0)
 		{
 			value /= 10;
-			counter++;
+			write(1, &value, 1);
 		}
-		write(1, value, counter);
 	}
 }
