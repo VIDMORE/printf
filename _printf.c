@@ -7,8 +7,6 @@ int _printf(char *format, ...)
 	forms formlist[] = {
 		{"s", printstr},
 		{"c", printchar},
-		{"d", printdec},
-		{"i", printint}
 		{NULL, NULL}
 	};
 
@@ -18,30 +16,7 @@ int _printf(char *format, ...)
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (format[i] == '%')
-		{
-			for (j = 0; j < 2; j++)
-			{
-				if (format[i + 1] == *formlist[j].f && format[i + 1] != '%')
-				{
-					formlist[j].print_str(args);
-					i++;
-					break;
-				}
-				else if (format[i + 1] == '%')
-				{
-					printper();
-					i++;
-                                        break;
-				}
-			}
-			if (!formlist[j].f)
-				exit(255);
-		}
-		else
-		{
-			_printchar(format[i]);
-		}
+		validate_format(format, formlist, args);
 	}
 
 	va_end(args);

@@ -42,8 +42,10 @@ void printper(void)
 	write(1, "%", 1);
 }
 
-void validate_format(char *format)
+void validate_format(char *format, form formlist, va_list args)
 {
+	int i = 0, j;
+
 	if (format)
 	{
 		if (format[i] == '%')
