@@ -17,4 +17,6 @@ void printstr(va_list);
 void printchar(va_list);
 void _printchar(char);
 void printper(void);
+void validate_format(char *, va_list);
+void printint(va_list params);
 #endif
