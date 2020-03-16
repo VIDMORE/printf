@@ -9,6 +9,6 @@
  */
 int main(void)
 { 
-   _printf("hola co%s, %s %c.\n", "mo estas", "Pablito", 'A');
+   _printf("hol%c %s %i\n",'a', "como estas?", 234);
     return (0);
 }

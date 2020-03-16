@@ -49,11 +49,12 @@ char *validate_option(char *stocker, char format, va_list params)
 		}
 		else if (format == '%')
 		{
-			printper();
+			printper(stocker);
+			i++;
 			break;
 		}
 	}
-	if (!*formlist[i].f)
+	if (!formlist[i].f)
 		exit(255);
 
 	return (stocker);
