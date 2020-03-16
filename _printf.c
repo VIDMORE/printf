@@ -2,14 +2,21 @@
 
 int _printf(char *format, ...)
 {
+	char *stocker;
+	va_list params;
 
-	va_list args;
+	if (format)
+	{
+		va_start(args, format);
 
-	va_start(args, format);
+		stocker = start_stocker();
+		
+		start_stocker(stocker, format, params);
+		
+		validate_format(format, args);
 
-	validate_format(format, args);
-
-	va_end(args);
+		va_end(args);
+	}
 
 	return (0);
 }

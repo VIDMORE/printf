@@ -94,9 +94,11 @@ void printint(va_list params)
 		value = va_arg(params, int) + 48;
 
 		while (value > 0)
-		{
+			{
 			value /= 10;
 			write(1, &value, 1);
 		}
 	}
 }
+
+buffer	
