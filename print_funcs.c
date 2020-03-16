@@ -142,7 +142,6 @@ char * printint(va_list params, char * stocker)
 		while (value > 0)
 		{
 			value /= 10;
-			write(1, &value, 1);
 		}
 		strncat(stocker, format, strlen(format));
 	}

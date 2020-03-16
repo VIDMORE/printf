@@ -55,7 +55,6 @@ char *validate_option(char *stocker, char format, va_list params)
 			break;
 		}
 	}
-<<<<<<< HEAD
 	/**if (!formlist[i].f)
 		exit(255);
 	*/
