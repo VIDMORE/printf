@@ -9,6 +9,6 @@
  */
 int main(void)
 { 
-   _printf("hola co%s, %s %c.\n", "mo estas", "Pablito", 'A');
+   _printf("%s en hexadecimal es %x\n","489", 489);
     return (0);
 }

@@ -18,7 +18,34 @@ char *printstr(va_list params, char *stocker)
 	}
 	return (stocker);
 }
+char * printhex(va_list params, char *stocker)
+{
+	int num = va_arg(params, int);
+	int count = 0, posicion = 0, len, ref = num;
+	char *p;
+	char *a = "0123456789abcdef";
+	if (params)
+	{
+		while (num > 0)
+		{
+			count++;
+			num = num / 16;
+		}
 
+		p = malloc(count+1);
+
+		while (ref > 0)
+		{
+			p[posicion] = a[ref % 16];
+			ref /= 16;
+			posicion++;
+		}
+		p[count] = '\0';
+		len = strlen(p);
+		_strncat(stocker, p, len);
+	}
+	return (stocker);
+}
 void _printstr(char *stocker)
 {
 	write(1, stocker, strlen(stocker));
@@ -52,47 +79,47 @@ void printper(void)
 }
 
 /*void validate_format(char *format, va_list args)
-{
-	int i = 0, j;
-	forms formlist[] = {
-		{"s", printstr},
-		{"c", printchar},
-		{"i", printint},
-		{"d", printint},
-		{NULL, NULL}
-	};
+  {
+  int i = 0, j;
+  forms formlist[] = {
+  {"s", printstr},
+  {"c", printchar},
+  {"i", printint},
+  {"d", printint},
+  {NULL, NULL}
+  };
 
-	if (format)
-	{
-		for (i = 0; format[i] != '\0'; i++)
-		{
-			if (format[i] == '%')
-			{
-				for (j = 0; j < 2; j++)
-				{
-					if (format[i + 1] == *formlist[j].f && format[i + 1] != '%')
-					{
-						formlist[j].print_str(args);
-						i++;
-						break;
-					}
-					else if (format[i + 1] == '%')
-					{
-						printper();
-						i++;
-						break;
-					}
-				}
-				if (!formlist[j].f)
-					exit(255);
-			}
-			else
-			{
-				_printchar(format[i]);
-			}
-		}	
-	}
-}*/
+  if (format)
+  {
+  for (i = 0; format[i] != '\0'; i++)
+  {
+  if (format[i] == '%')
+  {
+  for (j = 0; j < 2; j++)
+  {
+  if (format[i + 1] == *formlist[j].f && format[i + 1] != '%')
+  {
+  formlist[j].print_str(args);
+  i++;
+  break;
+  }
+  else if (format[i + 1] == '%')
+  {
+  printper();
+  i++;
+  break;
+  }
+  }
+  if (!formlist[j].f)
+  exit(255);
+  }
+  else
+  {
+  _printchar(format[i]);
+  }
+  }	
+  }
+  }*/
 
 char * printint(va_list params, char * stocker)
 {
@@ -103,7 +130,7 @@ char * printint(va_list params, char * stocker)
 		value = va_arg(params, int) + 48;
 
 		while (value > 0)
-			{
+		{
 			value /= 10;
 			write(1, &value, 1);
 		}
@@ -113,12 +140,12 @@ char * printint(va_list params, char * stocker)
 }
 
 /**
-* _strncat - concatenates two strings
-* @src: First string to append
-* @dest: Second string to append
-* @n: number of bytes
-* Return: Pointer to the resulting string
-**/
+ * _strncat - concatenates two strings
+ * @src: First string to append
+ * @dest: Second string to append
+ * @n: number of bytes
+ * Return: Pointer to the resulting string
+ **/
 
 char *_strncat(char *dest, char *src, int n)
 {
@@ -136,56 +163,55 @@ char *_strncat(char *dest, char *src, int n)
 	dest[i] = '\0';
 	return (dest);
 }
-
 /* 
-* function to reverse a string  
-*/
-/**
-void my_reverse(char str[], int len)
-{
-    int start, end;
-    char temp;
-    for(start=0, end=len-1; start < end; start++, end--) {
-        temp = *(str+start);
-        *(str+start) = *(str+end);
-        *(str+end) = temp;
-    }
-}
+ * function to reverse a string  
  */
 /**
-char* my_itoa(int num, char* str, int base)
-{
-    int i = 0;
-    bool isNegative = false;
-  */
-    /* A zero is same "0" string in all base */
-    /**if (num == 0) {
-        str[i] = '0';
-        str[i + 1] = '\0';
-        return str;
-    }*/
-  
-    /* negative numbers are only handled if base is 10 
-       otherwise considered unsigned number */
-    /**if (num < 0 && base == 10) {
-        isNegative = true;
-        num = -num;
-    }
-  
-    while (num != 0) {
-        int rem = num % base;
-        str[i++] = (rem > 9)? (rem-10) + 'A' : rem + '0';
-        num = num/base;
-    }*/
-  
-    /* Append negative sign for negative numbers */
-    /**if (isNegative){
-        str[i++] = '-';
-    }
-  
-    str[i] = '\0';
- 
-    my_reverse(str, i);
-  
-    return str;
-}*/
+  void my_reverse(char str[], int len)
+  {
+  int start, end;
+  char temp;
+  for(start=0, end=len-1; start < end; start++, end--) {
+  temp = *(str+start);
+ *(str+start) = *(str+end);
+ *(str+end) = temp;
+ }
+ }
+ */
+/**
+  char* my_itoa(int num, char* str, int base)
+  {
+  int i = 0;
+  bool isNegative = false;
+ */
+/* A zero is same "0" string in all base */
+/**if (num == 0) {
+  str[i] = '0';
+  str[i + 1] = '\0';
+  return str;
+  }*/
+
+/* negative numbers are only handled if base is 10 
+   otherwise considered unsigned number */
+/**if (num < 0 && base == 10) {
+  isNegative = true;
+  num = -num;
+  }
+
+  while (num != 0) {
+  int rem = num % base;
+  str[i++] = (rem > 9)? (rem-10) + 'A' : rem + '0';
+  num = num/base;
+  }*/
+
+/* Append negative sign for negative numbers */
+/**if (isNegative){
+  str[i++] = '-';
+  }
+
+  str[i] = '\0';
+
+  my_reverse(str, i);
+
+  return str;
+  }*/

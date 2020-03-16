@@ -35,11 +35,12 @@ char *validate_option(char *stocker, char format, va_list params)
 		{"c", printchar},
 		{"i", printint},
 		{"d", printint},
+		{"x", printhex},
 		{NULL, NULL}
 	};
 	int i;
 
-	for (i = 0; i < 4; i++)
+	for (i = 0; i < 5; i++)
 	{
 		if (format == *formlist[i].f)
 		{
@@ -53,8 +54,8 @@ char *validate_option(char *stocker, char format, va_list params)
 			break;
 		}
 	}
-	if (!*formlist[i].f)
+	/**if (!formlist[i].f)
 		exit(255);
-
+	*/
 	return (stocker);
 }
