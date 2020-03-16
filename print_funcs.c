@@ -5,14 +5,16 @@
  * @params: Arguments passed in the elypsis
  */
 
-char *printstr(va_list params, char *stoker)
+char *printstr(va_list params, char *stocker)
 {
 	char *str;
+	int len;
 
 	if (params)
 	{
 		str = va_arg(params, char *);
-		_strncat(stocker, str, strlen(str));
+		len =  strlen(str);
+		_strncat(stocker, str, len);
 	}
 	return (stocker);
 }
@@ -27,13 +29,15 @@ void _printstr(char *stocker)
  * @params: Arguments passed in the elypsis
  */
 
-void printchar(va_list params)
+char * printchar(va_list params, char *stocker)
 {
 	char chr;
-
-	chr = va_arg(params, int);
-
-	write(1, &chr, 1);
+	if (params)
+	{
+		chr = va_arg(params, int);
+		_strncat(stocker, &chr, 1);
+	}
+	return (stocker);
 }
 
 void _printchar(char chr)
@@ -90,7 +94,7 @@ void printper(void)
 	}
 }*/
 
-void printint(va_list params)
+char * printint(va_list params, char * stocker)
 {
 	char value;
 
@@ -104,6 +108,8 @@ void printint(va_list params)
 			write(1, &value, 1);
 		}
 	}
+
+	return (stocker);
 }
 
 /**
@@ -119,7 +125,7 @@ char *_strncat(char *dest, char *src, int n)
 	int i, j;
 
 	i = 0;
-	while (dest[i] != '\0')
+	while (dest[i])
 	{
 		i++;
 	}
@@ -133,6 +139,7 @@ char *_strncat(char *dest, char *src, int n)
 /* 
 * function to reverse a string  
 */
+/**
 void my_reverse(char str[], int len)
 {
     int start, end;
@@ -143,22 +150,23 @@ void my_reverse(char str[], int len)
         *(str+end) = temp;
     }
 }
- 
+ */
+/**
 char* my_itoa(int num, char* str, int base)
 {
     int i = 0;
     bool isNegative = false;
-  
+  */
     /* A zero is same "0" string in all base */
-    if (num == 0) {
+    /**if (num == 0) {
         str[i] = '0';
         str[i + 1] = '\0';
         return str;
-    }
+    }*/
   
     /* negative numbers are only handled if base is 10 
        otherwise considered unsigned number */
-    if (num < 0 && base == 10) {
+    /**if (num < 0 && base == 10) {
         isNegative = true;
         num = -num;
     }
@@ -167,10 +175,10 @@ char* my_itoa(int num, char* str, int base)
         int rem = num % base;
         str[i++] = (rem > 9)? (rem-10) + 'A' : rem + '0';
         num = num/base;
-    }
+    }*/
   
     /* Append negative sign for negative numbers */
-    if (isNegative){
+    /**if (isNegative){
         str[i++] = '-';
     }
   
@@ -179,4 +187,4 @@ char* my_itoa(int num, char* str, int base)
     my_reverse(str, i);
   
     return str;
-}
+}*/

@@ -3,17 +3,20 @@
 char *start_storage(char *stocker, char *format, va_list params)
 {
 	int i;
-
+	stocker[0] = '\0';
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
 			validate_option(stocker, format[i + 1], params);
+			i++;
 		}
 		else
+		{
 			stocker[i] = format[i];
+			stocker[i + 1] = '\0';
+		}
 	}
-	stocker[i] = '\0';
 	if(stocker)
 	{
 		return (stocker);
@@ -27,12 +30,11 @@ char *validate_option(char *stocker, char format, va_list params)
 		{'s', printstr},
 		{'c', printchar},
 		{'i', printint},
-		{'d', printint},
-		{NULL, NULL}
+		{'d', printint}
 	};
 	int i;
 
-	for (i = 0; formlist[i].f; i++)
+	for (i = 0; i < 4; i++)
 	{
 		if (format == formlist[i].f)
 		{
