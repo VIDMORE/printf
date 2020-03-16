@@ -8,8 +8,8 @@
 
 typedef struct formats
 {
-	char *f;
-	void (*print_str)(va_list);
+	char f;
+	void (*print_str)(va_list, char *);
 } forms;
 
 int _printf(char *format, ...);
@@ -19,4 +19,8 @@ void _printchar(char);
 void printper(void);
 void validate_format(char *, va_list);
 void printint(va_list params);
+char *start_stocker(void);
+char *start_storage(char *stocker, char *format, va_list params);
+char *validate_option(char *stocker, char format, va_list params);
+
 #endif

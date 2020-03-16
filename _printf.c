@@ -2,20 +2,22 @@
 
 int _printf(char *format, ...)
 {
-	char *stocker;
+	char stocker[1024];
 	va_list params;
 
 	if (format)
 	{
-		va_start(args, format);
+		va_start(params, format);
 
-		stocker = start_stocker();
-		
-		start_stocker(stocker, format, params);
-		
-		validate_format(format, args);
+		/*stocker = start_stocker();*/
 
-		va_end(args);
+		start_storage(stocker, format, params);		
+
+		write(1, &stocker, strlen(stocker));
+		
+		/*validate_format(format, params);*/
+
+		va_end(params);
 	}
 
 	return (0);
