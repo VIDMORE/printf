@@ -67,15 +67,22 @@ char * printchar(va_list params, char *stocker)
 	return (stocker);
 }
 
-void _printchar(char chr)
+char * printper(char *stocker)
 {
-	if (chr)
-		write(1, &chr, 1);
-}
+	int len;
 
-void printper(void)
-{
-	write(1, "%", 1);
+	len = strlen(stocker);
+	if (len == 0)
+	{
+		stocker[len] = '%';
+		stocker[len + 1] = '\0';
+	}
+	else
+	{
+		stocker[len - 1] = '%';
+		stocker[len] = '\0';
+	}
+	return(stocker);
 }
 
 /*void validate_format(char *format, va_list args)
@@ -123,17 +130,21 @@ void printper(void)
 
 char * printint(va_list params, char * stocker)
 {
-	char value;
+	int value;
+	char format[1024];
 
 	if (params)
 	{
-		value = va_arg(params, int) + 48;
+		value = va_arg(params, int);
+
+		my_itoa(value, format , 10);
 
 		while (value > 0)
 		{
 			value /= 10;
 			write(1, &value, 1);
 		}
+		strncat(stocker, format, strlen(format));
 	}
 
 	return (stocker);
@@ -215,3 +226,53 @@ char *_strncat(char *dest, char *src, int n)
 
   return str;
   }*/
+
+void my_reverse(char str[], int len)
+{
+	int start, end;
+	char temp;
+	for(start=0, end=len-1; start < end; start++, end--) {
+		temp = *(str+start);
+		*(str+start) = *(str+end);
+		*(str+end) = temp;
+	}
+}
+
+
+char* my_itoa(int num, char* str, int base)
+{
+	int i = 0;
+	int isNegative = 0;
+
+
+	/* A zero is same "0" string in all base */
+	if (num == 0) {
+		str[i] = '0';
+		str[i + 1] = '\0';
+		return str;
+	}
+
+	/* negative numbers are only handled if base is 10 
+	   otherwise considered unsigned number */
+	if (num < 0 && base == 10) {
+		isNegative = 1;
+		num = -num;
+	}
+
+	while (num != 0) {
+		int rem = num % base;
+		str[i++] = (rem > 9)? (rem-10) + 'A' : rem + '0';
+		num = num/base;
+	}
+
+	/* Append negative sign for negative numbers */
+	if (isNegative){
+		str[i++] = '-';
+	}
+
+	str[i] = '\0';
+
+	my_reverse(str, i);
+
+	return str;
+}
