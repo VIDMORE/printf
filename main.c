@@ -20,8 +20,8 @@ int main(void)
 	printf("Length:[%d, %i]\n", len2, len2);
 	_printf("Negative:[%d]\n", -762534);
 	printf("Negative:[%d]\n", -762534);
-	_printf("[%x, %x]\n", -1, ui);
-	printf("[%x, %X]\n", -1, ui);
+	_printf("[%x, %x]\n", 23761, ui);
+	printf("[%x, %X]\n", 23761, ui);
 	_printf("Character:[%c]\n", 'H');
 	printf("Character:[%c]\n", 'H');
 	_printf("String:[%s]\n", "I am a string !");

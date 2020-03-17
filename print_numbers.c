@@ -9,53 +9,39 @@
 
 char *printhex(va_list params, char *stocker)
 {
-	int num = va_arg(params, int), neg = 1;
-	int count = 0, posicion = 0, len, ref, i, j, iter, mod;
+	int num = va_arg(params, int);
+	int count = 0, ref = num, posicion = 0, i, j, len;
+	char temp;
 	char *p;
 	char *a = "0123456789abcdef";
-	char temp;
 
-	if (params)
+	while (num > 0)
 	{
-		ref = num;
-
-		if (num < 0)
-		{
-			num *= -1;
-			neg *= -1;
-		}
-
-		while (num > 0)
-		{
-			count++;
-			num = num / 16;
-		}
-
-		p = malloc(count + 1);
-		iter = count;
-
-		while (iter > 0)
-		{
-			mod = ref % 16;
-			mod *= neg;
-			p[posicion] = a[mod];
-			ref /= 16;
-			posicion++;
-			iter--;
-		}
-		p[count] = '\0';
-
-		for (i = 0, j = count - 1; i < count / 2; j--, i++)
-		{
-			temp = p[i];
-			p[i] = p[j];
-			p[j] = temp;
-		}
-
-		len = _strlen(p);
-		_strncat(stocker, p, len);
+		count++;
+		num = num / 16;
 	}
+
+	p = malloc(count + 1);
+
+	while (ref > 0)
+	{
+		p[posicion] = a[ref % 16];
+		ref /= 16;
+		posicion++;
+	}
+	p[count] = '\0';
+
+	for (i = 0, j = count - 1; i < count / 2; j--, i++)
+	{
+		temp = p[i];
+		p[i] = p[j];
+		p[j] = temp;
+	}
+
+	len = _strlen(p);
+	_strncat(stocker, p, len);
 	return (stocker);
+
 }
 
 
