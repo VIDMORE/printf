@@ -15,6 +15,7 @@ typedef struct formats
 int _printf(char *format, ...);
 char * printstr(va_list, char *);
 char * printchar(va_list, char *);
+char * printhex(va_list, char *);
 void _printchar(char);
 char * printper(char *stocker);
 void validate_format(char *, va_list);

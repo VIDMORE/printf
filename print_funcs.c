@@ -18,7 +18,38 @@ char *printstr(va_list params, char *stocker)
 	}
 	return (stocker);
 }
+char * printhex(va_list params, char *stocker)
+{
+	int num = va_arg(params, int);
+	int count = 0, posicion = 0, len, ref = num;
+	char *p;
+	char *a = "0123456789abcdef";
+	if (params)
+	{
+		while (num > 0)
+		{
+			count++;
+			num = num / 16;
+		}
 
+		p = malloc(count+1);
+
+		while (ref > 0)
+		{
+			p[posicion] = a[ref % 16];
+			ref /= 16;
+			posicion++;
+		}
+		p[count] = '\0';
+		len = strlen(p);
+		_strncat(stocker, p, len);
+	}
+	return (stocker);
+}
+void _printstr(char *stocker)
+{
+	write(1, stocker, strlen(stocker));
+}
 
 /**
  * printchar - Function that prints a char
@@ -108,6 +139,11 @@ char * printint(va_list params, char * stocker)
 
 		my_itoa(value, format , 10);
 
+		while (value > 0)
+		{
+			value /= 10;
+			write(1, &value, 1);
+		}
 		strncat(stocker, format, strlen(format));
 	}
 
@@ -138,11 +174,10 @@ char *_strncat(char *dest, char *src, int n)
 	dest[i] = '\0';
 	return (dest);
 }
-
 /* 
  * function to reverse a string  
  */
-
+  
 void my_reverse(char str[], int len)
 {
 	int start, end;
