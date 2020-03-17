@@ -14,6 +14,7 @@ char *printhex(va_list params, char *stocker)
 	char temp;
 	char *p;
 	char *a = "0123456789abcdef";
+
 	if (num)
 	{
 		while (num > 0)
@@ -23,6 +24,9 @@ char *printhex(va_list params, char *stocker)
 		}
 
 		p = malloc(count + 1);
+
+		if (!p)
+			exit(98);
 
 		while (ref > 0)
 		{
@@ -41,7 +45,7 @@ char *printhex(va_list params, char *stocker)
 
 		len = _strlen(p);
 		_strncat(stocker, p, len);
-
+		free(p);
 		return (stocker);
 	}
 	exit(-1);
