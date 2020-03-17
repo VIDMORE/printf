@@ -67,10 +67,11 @@ char *validate_option(char *stocker, char format, va_list params)
 		else if (format == '%')
 		{
 			printper(stocker);
+			i++;
 			break;
 		}
 	}
-	if (*formlist[i].f != format && format != '%')
+	if (*formlist[i - 1].f != format && format != '%')
 	{
 		_strncat(stocker, warning, 3);
 		return (stocker);
