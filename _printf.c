@@ -15,7 +15,11 @@ int _printf(char *format, ...)
 		va_start(params, format);
 
 		start_storage(stocker, format, params);
-
+		
+		if (stocker == NULL)
+		{		
+			return(-1);
+		}
 		write(1, &stocker, _strlen(stocker));
 
 		va_end(params);

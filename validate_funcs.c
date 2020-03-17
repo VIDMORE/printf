@@ -16,7 +16,11 @@ char *start_storage(char *stocker, char *format, va_list params)
 
 	for (i = 0, sp = 0; format[i] != '\0'; i++, sp++)
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && format[i + 1] == '\0')
+		{
+			return (stocker);
+		}
+		else if (format[i] == '%')
 		{
 			validate_option(stocker, format[i + 1], params);
 			sp = _strlen(stocker) - 1;
@@ -41,6 +45,8 @@ char *start_storage(char *stocker, char *format, va_list params)
 
 char *validate_option(char *stocker, char format, va_list params)
 {
+	char warning[3] = {'%', format, '\0'};
+
 	forms formlist[] = {
 		{"s", printstr},
 		{"c", printchar},
@@ -64,9 +70,17 @@ char *validate_option(char *stocker, char format, va_list params)
 			break;
 		}
 	}
-
 	if (*formlist[i].f != format && format != '%')
-		exit(98);
-
+	{
+		_strncat(stocker, warning, 3);
+		return (stocker);
+	}
 	return (stocker);
 }
+
+/**
+ *
+ *
+ *
+ */
+
