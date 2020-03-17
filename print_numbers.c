@@ -10,31 +10,38 @@
 char *printhex(va_list params, char *stocker)
 {
 	int num = va_arg(params, int);
-	int count = 0, posicion = 0, len, ref = num;
+	int count = 0, ref = num, posicion = 0, i, j, len;
+	char temp;
 	char *p;
 	char *a = "0123456789abcdef";
 
-	if (params)
+	while (num > 0)
 	{
-		while (num > 0)
-		{
-			count++;
-			num = num / 16;
-		}
-
-		p = malloc(count + 1);
-
-		while (ref > 0)
-		{
-			p[posicion] = a[ref % 16];
-			ref /= 16;
-			posicion++;
-		}
-		p[count] = '\0';
-		len = _strlen(p);
-		_strncat(stocker, p, len);
+		count++;
+		num = num / 16;
 	}
+
+	p = malloc(count + 1);
+
+	while (ref > 0)
+	{
+		p[posicion] = a[ref % 16];
+		ref /= 16;
+		posicion++;
+	}
+	p[count] = '\0';
+
+	for (i = 0, j = count - 1; i < count / 2; j--, i++)
+	{
+		temp = p[i];
+		p[i] = p[j];
+		p[j] = temp;
+	}
+
+	len = _strlen(p);
+	_strncat(stocker, p, len);
 	return (stocker);
+
 }
 
 

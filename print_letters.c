@@ -54,4 +54,4 @@ char *printper(char *stocker)
 	stocker[len] = '%';
 	stocker[len + 1] = '\0';
 	return (stocker);
-i}
+}
