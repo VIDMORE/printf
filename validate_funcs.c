@@ -70,8 +70,8 @@ char *validate_option(char *stocker, char format, va_list params)
 			break;
 		}
 	}
-	if (!formlist[i].f)
-		exit(255);
+	/**if (!formlist[i].f)
+		exit(255);*/
 
 
 	return (stocker);

@@ -8,6 +8,7 @@ int _printf(char *format, ...)
 {
 	char stocker[1024];
 	va_list params;
+	int len;
 
 	if (format)
 	{
@@ -19,6 +20,6 @@ int _printf(char *format, ...)
 
 		va_end(params);
 	}
-
-	return (0);
+	len = _strlen(stocker);
+	return (len);
 }
