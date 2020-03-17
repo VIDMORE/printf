@@ -18,8 +18,12 @@ int _printf(char *format, ...)
 
 		write(1, &stocker, _strlen(stocker));
 
+		va_end(params);
+		len = _strlen(stocker);
+		return (len);
 	}
-	va_end(params);
-	len = _strlen(stocker);
-	return (len);
+	else
+	{
+		return (-1);
+	}
 }

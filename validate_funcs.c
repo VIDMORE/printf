@@ -13,6 +13,7 @@ char *start_storage(char *stocker, char *format, va_list params)
 	int i, sp;
 
 	stocker[0] = '\0';
+
 	for (i = 0, sp = 0; format[i] != '\0'; i++, sp++)
 	{
 		if (format[i] == '%')
@@ -28,11 +29,7 @@ char *start_storage(char *stocker, char *format, va_list params)
 		}
 	}
 
-	if (stocker)
-	{
-		return (stocker);
-	}
-	return (0);
+	return (stocker);
 }
 
 /**
@@ -55,21 +52,22 @@ char *validate_option(char *stocker, char format, va_list params)
 	};
 	int i;
 
-	for (i = 0; i < 5; i++)
+	for (i = 0; formlist[i].f; i++)
 	{
 		if (format == *formlist[i].f)
 		{
 			formlist[i].print_str(params, stocker);
-			i++;
 			break;
 		}
 		else if (format == '%')
 		{
 			printper(stocker);
-			i++;
 			break;
 		}
 	}
+
+	if (formlist[i].f != format)
+		return (-1);
 
 	return (stocker);
 }

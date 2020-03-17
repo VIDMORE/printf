@@ -23,6 +23,9 @@ char *printhex(va_list params, char *stocker)
 
 	p = malloc(count + 1);
 
+	if (!p)
+		return (-1);
+
 	while (ref > 0)
 	{
 		p[posicion] = a[ref % 16];
@@ -40,6 +43,7 @@ char *printhex(va_list params, char *stocker)
 
 	len = _strlen(p);
 	_strncat(stocker, p, len);
+	free(p);
 	return (stocker);
 
 }
