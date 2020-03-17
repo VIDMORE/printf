@@ -67,6 +67,7 @@ char *validate_option(char *stocker, char format, va_list params)
 		else if (format == '%')
 		{
 			printper(stocker);
+			i++;
 			break;
 		}
 	}
