@@ -14,34 +14,37 @@ char *printhex(va_list params, char *stocker)
 	char temp;
 	char *p;
 	char *a = "0123456789abcdef";
-
-	while (num > 0)
+	if (num)
 	{
-		count++;
-		num = num / 16;
+		while (num > 0)
+		{
+			count++;
+			num = num / 16;
+		}
+
+		p = malloc(count + 1);
+
+		while (ref > 0)
+		{
+			p[posicion] = a[ref % 16];
+			ref /= 16;
+			posicion++;
+		}
+		p[count] = '\0';
+
+		for (i = 0, j = count - 1; i < count / 2; j--, i++)
+		{
+			temp = p[i];
+			p[i] = p[j];
+			p[j] = temp;
+		}
+
+		len = _strlen(p);
+		_strncat(stocker, p, len);
+
+		return (stocker);
 	}
-
-	p = malloc(count + 1);
-
-	while (ref > 0)
-	{
-		p[posicion] = a[ref % 16];
-		ref /= 16;
-		posicion++;
-	}
-	p[count] = '\0';
-
-	for (i = 0, j = count - 1; i < count / 2; j--, i++)
-	{
-		temp = p[i];
-		p[i] = p[j];
-		p[j] = temp;
-	}
-
-	len = _strlen(p);
-	_strncat(stocker, p, len);
-	return (stocker);
-
+	exit(-1);
 }
 
 
@@ -60,14 +63,20 @@ char *printint(va_list params, char *stocker)
 	if (params)
 	{
 		value = va_arg(params, int);
-
-		my_itoa(value, format, 10);
-
-		while (value > 0)
+		if (value)
 		{
-			value /= 10;
+			my_itoa(value, format, 10);
+
+			while (value > 0)
+			{
+				value /= 10;
+			}
+			strncat(stocker, format, _strlen(format));
 		}
-		strncat(stocker, format, _strlen(format));
+		else
+		{
+			exit(-1);
+		}
 	}
 
 	return (stocker);

@@ -15,8 +15,13 @@ char *printstr(va_list params, char *stocker)
 	if (params)
 	{
 		str = va_arg(params, char *);
-		len =  _strlen(str);
-		_strncat(stocker, str, len);
+		if (str)
+		{
+			len =  _strlen(str);
+			_strncat(stocker, str, len);
+		}
+		else
+			exit(-1);
 	}
 	return (stocker);
 }
@@ -35,7 +40,12 @@ char *printchar(va_list params, char *stocker)
 	if (params)
 	{
 		chr = va_arg(params, int);
+		if (chr)
+		{
 		_strncat(stocker, &chr, 1);
+		}
+		else
+			exit(-1);
 	}
 	return (stocker);
 }

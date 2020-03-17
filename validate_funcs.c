@@ -27,12 +27,7 @@ char *start_storage(char *stocker, char *format, va_list params)
 			stocker[sp + 1] = '\0';
 		}
 	}
-
-	if (stocker)
-	{
-		return (stocker);
-	}
-	return (0);
+	return (stocker);
 }
 
 /**
