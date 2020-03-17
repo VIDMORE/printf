@@ -15,7 +15,7 @@ int _printf(char *format, ...)
 
 		start_storage(stocker, format, params);
 
-		write(1, &stocker, strlen(stocker));
+		write(1, &stocker, _strlen(stocker));
 
 		va_end(params);
 	}

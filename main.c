@@ -19,7 +19,7 @@ int main(void)
 	printf("Length:[%d, %i]\n", len2, len2);
 	_printf("Negative:[%d]\n", -762534);
 	printf("Negative:[%d]\n", -762534);
-	_printf("Unsigned hexadecimal:[%x, %x]\n", ui, ui);
+	/**_printf("Unsigned hexadecimal:[%x, %x]\n", ui, ui);**/
 	printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
 	_printf("Character:[%c]\n", 'H');
 	printf("Character:[%c]\n", 'H');

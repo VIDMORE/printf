@@ -1,5 +1,13 @@
 #include "holberton.h"
 
+/**
+ * start_storage - function to start the stocker
+ * @stocker: buffer
+ * @format: string to print
+ * @params: params for the string
+ * Return: stocker with the full string
+ */
+
 char *start_storage(char *stocker, char *format, va_list params)
 {
 	int i, sp;
@@ -10,7 +18,7 @@ char *start_storage(char *stocker, char *format, va_list params)
 		if (format[i] == '%')
 		{
 			validate_option(stocker, format[i + 1], params);
-			sp = strlen(stocker) - 1;
+			sp = _strlen(stocker) - 1;
 			i++;
 		}
 		else
@@ -26,6 +34,14 @@ char *start_storage(char *stocker, char *format, va_list params)
 	}
 	return (0);
 }
+
+/**
+ * validate_option - function to validate the type of function to use
+ * @stocker: buffer
+ * @format: string to print
+ * @params: params for the string
+ * Return: stocker with the full string
+ */
 
 char *validate_option(char *stocker, char format, va_list params)
 {
@@ -54,6 +70,9 @@ char *validate_option(char *stocker, char format, va_list params)
 			break;
 		}
 	}
+	if (!formlist[i].f)
+		exit(255);
+
 
 	return (stocker);
 }
