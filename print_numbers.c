@@ -24,7 +24,7 @@ char *printhex(va_list params, char *stocker)
 	p = malloc(count + 1);
 
 	if (!p)
-		return (-1);
+		exit(98);
 
 	while (ref > 0)
 	{
