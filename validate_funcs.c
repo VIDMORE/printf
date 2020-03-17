@@ -14,14 +14,13 @@ char *start_storage(char *stocker, char *format, va_list params)
 			i++;
 		}
 		else
-		{	
+		{
 			stocker[sp] = format[i];
 			stocker[sp + 1] = '\0';
 		}
-		
 	}
-	
-	if(stocker)
+
+	if (stocker)
 	{
 		return (stocker);
 	}
@@ -55,8 +54,6 @@ char *validate_option(char *stocker, char format, va_list params)
 			break;
 		}
 	}
-	/**if (!formlist[i].f)
-		exit(255);
-	*/
+
 	return (stocker);
 }
