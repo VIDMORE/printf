@@ -11,17 +11,18 @@ char *printstr(va_list params, char *stocker)
 {
 	char *str;
 	int len;
+	char warning[7] = {'(', 'n', 'u', 'l', 'l', ')', '\0'};
 
 	if (params)
 	{
 		str = va_arg(params, char *);
-		if (str)
+		if (str != NULL)
 		{
 			len =  _strlen(str);
 			_strncat(stocker, str, len);
 		}
 		else
-			exit(-1);
+			_strncat(stocker, warning, 7);
 	}
 	return (stocker);
 }
@@ -36,6 +37,7 @@ char *printstr(va_list params, char *stocker)
 char *printchar(va_list params, char *stocker)
 {
 	char chr;
+	char warning[2] = {'\0', '\0'};
 
 	if (params)
 	{
@@ -45,7 +47,7 @@ char *printchar(va_list params, char *stocker)
 		_strncat(stocker, &chr, 1);
 		}
 		else
-			exit(-1);
+			_strncat(stocker, warning, 2);
 	}
 	return (stocker);
 }

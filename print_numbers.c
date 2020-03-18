@@ -14,7 +14,7 @@ char *printhex(va_list params, char *stocker)
 	char temp;
 	char *p;
 	char *a = "0123456789abcdef";
-	char warning[2] = {'0','\0'};
+	char warning[2] = {'0', '\0'};
 
 	if (num)
 	{
@@ -23,12 +23,10 @@ char *printhex(va_list params, char *stocker)
 			count++;
 			num = num / 16;
 		}
-
 		p = malloc(count + 1);
 
 		if (!p)
 			exit(98);
-
 		while (ref > 0)
 		{
 			p[posicion] = a[ref % 16];
@@ -36,22 +34,18 @@ char *printhex(va_list params, char *stocker)
 			posicion++;
 		}
 		p[count] = '\0';
-
 		for (i = 0, j = count - 1; i < count / 2; j--, i++)
 		{
 			temp = p[i];
 			p[i] = p[j];
 			p[j] = temp;
 		}
-
 		len = _strlen(p);
 		_strncat(stocker, p, len);
 		free(p);
 	}
 	else
-	{
 		_strncat(stocker, warning, 2);
-	}
 	return (stocker);
 }
 
