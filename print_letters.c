@@ -37,7 +37,7 @@ char *printstr(va_list params, char *stocker)
 char *printchar(va_list params, char *stocker)
 {
 	char chr;
-	char warning[2] = {'\0', '\0'};
+	char warning[1] = {'\0'};
 
 	if (params)
 	{

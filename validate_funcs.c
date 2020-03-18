@@ -8,7 +8,7 @@
  * Return: stocker with the full string
  */
 
-char *start_storage(char *stocker, char *format, va_list params)
+char *start_storage(char *stocker, const char *format, va_list params)
 {
 	int i, sp;
 
@@ -18,7 +18,7 @@ char *start_storage(char *stocker, char *format, va_list params)
 	{
 		if (format[i] == '%' && format[i + 1] == '\0')
 		{
-			return (stocker);
+			return (NULL);
 		}
 		else if (format[i] == '%')
 		{
@@ -45,7 +45,7 @@ char *start_storage(char *stocker, char *format, va_list params)
 
 char *validate_option(char *stocker, char format, va_list params)
 {
-	char warning[3] = {'%', format, '\0'};
+	char warning[3];
 
 	forms formlist[] = {
 		{"s", printstr},
@@ -57,6 +57,9 @@ char *validate_option(char *stocker, char format, va_list params)
 	};
 	int i;
 
+	warning[0] = '%';
+	warning[1] = format;
+	warning[2] = '\0';
 	for (i = 0; formlist[i].f; i++)
 	{
 		if (format == *formlist[i].f)
@@ -79,10 +82,3 @@ char *validate_option(char *stocker, char format, va_list params)
 	}
 	return (stocker);
 }
-
-/**
- *
- *
- *
- */
-

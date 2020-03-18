@@ -4,9 +4,9 @@
  * @format: string to be formated
  * Return: int
  */
-int _printf(char *format, ...)
+int _printf(const char *format, ...)
 {
-	char stocker[1024];
+	char stocker[BUFFER_SIZE];
 	va_list params;
 	int len;
 
@@ -14,9 +14,7 @@ int _printf(char *format, ...)
 	{
 		va_start(params, format);
 
-		start_storage(stocker, format, params);
-
-		if (*stocker == NULL)
+		if (!start_storage(stocker, format, params))
 		{
 			return (-1);
 		}
