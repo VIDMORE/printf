@@ -16,7 +16,7 @@ int _printf(char *format, ...)
 
 		start_storage(stocker, format, params);
 
-		if (stocker == NULL)
+		if (*stocker == NULL)
 		{
 			return (-1);
 		}
