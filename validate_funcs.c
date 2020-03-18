@@ -62,6 +62,7 @@ char *validate_option(char *stocker, char format, va_list params)
 		if (format == *formlist[i].f)
 		{
 			formlist[i].print_str(params, stocker);
+			i++;
 			break;
 		}
 		else if (format == '%')

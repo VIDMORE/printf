@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	_printf("%%%%%");
+	printf("-> %c <-", NULL);
 	/*printf("asd%\n");*/
 	return (0);
 }
