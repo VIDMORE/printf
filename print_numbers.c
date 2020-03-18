@@ -14,6 +14,7 @@ char *printhex(va_list params, char *stocker)
 	char temp;
 	char *p;
 	char *a = "0123456789abcdef";
+	char warning[2] = {'0','\0'};
 
 	if (num)
 	{
@@ -46,9 +47,12 @@ char *printhex(va_list params, char *stocker)
 		len = _strlen(p);
 		_strncat(stocker, p, len);
 		free(p);
-		return (stocker);
 	}
-	exit(-1);
+	else
+	{
+		_strncat(stocker, warning, 2);
+	}
+	return (stocker);
 }
 
 
@@ -63,6 +67,7 @@ char *printint(va_list params, char *stocker)
 {
 	int value;
 	char format[1024];
+	char warning[2] = {'0', '\0'};
 
 	if (params)
 	{
@@ -81,6 +86,10 @@ char *printint(va_list params, char *stocker)
 		{
 			exit(-1);
 		}
+	}
+	else
+	{
+		_strncat(stocker, warning, 2);
 	}
 
 	return (stocker);
