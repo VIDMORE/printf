@@ -37,17 +37,14 @@ char *printstr(va_list params, char *stocker)
 char *printchar(va_list params, char *stocker)
 {
 	char chr;
-	char warning[1] = {'\0'};
 
 	if (params)
 	{
 		chr = va_arg(params, int);
 		if (chr)
-		{
-		_strncat(stocker, &chr, 1);
-		}
+			_strncat(stocker, &chr, 1);
 		else
-			_strncat(stocker, warning, 2);
+			_strncat(stocker, "", 1);
 	}
 	return (stocker);
 }
