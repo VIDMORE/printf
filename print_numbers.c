@@ -66,20 +66,13 @@ char *printint(va_list params, char *stocker)
 	if (params)
 	{
 		value = va_arg(params, int);
-		if (value)
-		{
-			my_itoa(value, format, 10);
+		my_itoa(value, format, 10);
 
-			while (value > 0)
-			{
-				value /= 10;
-			}
-			strncat(stocker, format, _strlen(format));
-		}
-		else
+		while (value > 0)
 		{
-			exit(-1);
+			value /= 10;
 		}
+		strncat(stocker, format, _strlen(format));
 	}
 	else
 	{
