@@ -74,6 +74,7 @@ char *my_itoa(int num, char *str, int base)
 	while (num != 0)
 	{
 		int rem = num % base;
+
 		if (isNegative)
 			rem = rem * -1;
 
