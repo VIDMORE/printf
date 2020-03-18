@@ -18,7 +18,12 @@ int _printf(const char *format, ...)
 		{
 			return (-1);
 		}
-		write(1, &stocker, _strlen(stocker));
+		if (!stocker)
+		{
+			write(1, "", _strlen(stocker));
+		}
+		else
+			write(1, &stocker, _strlen(stocker));
 
 		va_end(params);
 		len = _strlen(stocker);
