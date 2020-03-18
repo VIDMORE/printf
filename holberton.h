@@ -5,8 +5,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <limits.h>
 
-#define BUFFER_SIZE 1024
+#define BUFFER_SIZE 6024
 
 /**
  * struct formats - structure used to identify a function

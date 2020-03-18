@@ -18,7 +18,7 @@ char *start_storage(char *stocker, const char *format, va_list params)
 	{
 		if (format[i] == '%' && format[i + 1] == '\0')
 		{
-			return (stocker);
+			return (NULL);
 		}
 		else if (format[i] == '%')
 		{
@@ -56,6 +56,7 @@ char *validate_option(char *stocker, char format, va_list params)
 		{NULL, NULL}
 	};
 	int i;
+
 	warning[0] = '%';
 	warning[1] = format;
 	warning[2] = '\0';
@@ -81,10 +82,3 @@ char *validate_option(char *stocker, char format, va_list params)
 	}
 	return (stocker);
 }
-
-/**
- *
- *
- *
- */
-

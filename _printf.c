@@ -14,9 +14,7 @@ int _printf(const char *format, ...)
 	{
 		va_start(params, format);
 
-		start_storage(stocker, format, params);
-
-		if (stocker == NULL)
+		if (!start_storage(stocker, format, params))
 		{
 			return (-1);
 		}
