@@ -68,12 +68,14 @@ char *my_itoa(int num, char *str, int base)
 	if (num < 0 && base == 10)
 	{
 		isNegative = 1;
-		num = -num;
+		num = num * -1;
 	}
 
 	while (num != 0)
 	{
 		int rem = num % base;
+		if (isNegative)
+			rem = rem * -1;
 
 		str[i++] = (rem > 9) ? (rem - 10) + 'A' : rem + '0';
 		num = num / base;

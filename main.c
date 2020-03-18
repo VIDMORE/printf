@@ -3,10 +3,7 @@
 
 int main()
 {
-        _printf("%i", INT_MAX);
-        _printf("%i", INT_MIN);
-        _printf("%d", INT_MAX);
-        _printf("%d", INT_MAX);
-
+	_printf("ALV%sMEVALEVRGA%%%%%s%c%x%d%i%w%\n", NULL, "Hol",'A', 489, 489, 489);
+        printf("%d%s\n", NULL, "Pinga");
         return (0);
 }
