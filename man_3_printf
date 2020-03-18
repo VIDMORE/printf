@@ -1,0 +1,38 @@
+.TH _PRINTF 3 "17 March 2020" "0.1" "_printf man page"
+
+.SH NAME
+.B _printf
+- Formatted output conversion and print data based in the original printf
+.SH SYNOPSIS
+.B #include "holberton.h"
+.B int _printf(const char *format, ... );
+
+.SH DESCRIPTION
+.B _printf()
+.B Usage
+
+Function that prints ARGUMENTS according to FORMAT, or execute according to OPTION:
+.SH FORMATS
+       %c     print characters
+       %s     print strings
+       %d     print integers of max and min size of an int type
+       %i     print integers of max and min size of an int type
+       %b     print unsigned integer as binary (base 2)
+       %u     print unsigned integer
+       %o     print unsigned integer as octal (base 8)
+       %x     print unsigned integer as hexadecimal (base 16) lower case
+       %X     print unsigned integer as hexadecimal (base 16) upper case
+       %p     print address as hexadecimal (base 16) lower case
+       %r     print reversed string
+       %R     print a string in rot13
+
+.SH RETURN VALUES
+On success, it returns the number of characters printed (except the null byte)
+
+On failure returns (-1).
+.SH SEE ALSO
+.I printf(3)
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+David Alejandro Corredor, Steven  Adolfo Brand
