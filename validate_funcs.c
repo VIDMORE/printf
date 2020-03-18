@@ -8,7 +8,7 @@
  * Return: stocker with the full string
  */
 
-char *start_storage(char *stocker, char *format, va_list params)
+char *start_storage(char *stocker, const char *format, va_list params)
 {
 	int i, sp;
 
